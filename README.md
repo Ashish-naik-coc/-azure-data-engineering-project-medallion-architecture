@@ -1,6 +1,6 @@
 # Azure End-to-End Data Engineering Project – Medallion Architecture
 
-This project demonstrates a **real-world Azure data pipeline** using the **Medallion Architecture (Bronze → Silver → Gold). It showcases skills in data ingestion, processing, transformation, security, and visualization — ideal for enterprise-scale data engineering roles.
+This project demonstrates a **real-world Azure data pipeline** using the **Medallion Architecture (Bronze → Silver → Gold). It showcases skills in data ingestion, processing, transformation, security, and visualization.
 
 ---
 
