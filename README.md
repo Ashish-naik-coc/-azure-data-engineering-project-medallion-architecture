@@ -6,7 +6,7 @@ An end-to-end data engineering project to track and visualize customer metrics a
 
 ## Architecture
 
-Architecture.png.png
+![Architecture Diagram](Architecture.png.png)
 
 
 ---
@@ -51,7 +51,7 @@ In This project I demonstrated a real-time data pipeline that ingests, transform
 
 ---
 
-## 📊 Power BI Report
+## Power BI Report
 
 A Power BI dashboard is built on top of the Gold layer to show:
 
@@ -59,11 +59,11 @@ A Power BI dashboard is built on top of the Gold layer to show:
 - Company-wise distribution
 - KPIs with card visuals
 
-📁 File: `powerbi_reports/Customer_Metrics_Report.pbix`
+## File: `powerbi_reports/Customer_Metrics_Report.pbix`
 
 ---
 
-## 🔐 Security with Azure Key Vault
+## Security with Azure Key Vault
 
 All credentials are securely stored in **Azure Key Vault** and retrieved via secret scopes in Databricks:
 
