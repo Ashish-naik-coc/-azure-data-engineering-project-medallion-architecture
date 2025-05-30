@@ -1,62 +1,74 @@
-# Azure End-to-End Data Engineering Project – Medallion Architecture
+# Retail Customer Metrics Platform (Azure + Databricks + Power BI)
 
-This project demonstrates a **real-world Azure data pipeline** using the **Medallion Architecture (Bronze → Silver → Gold). It showcases skills in data ingestion, processing, transformation, security, and visualization.
-
----
-
-## Business Scenario
-
-A retail company wants to modernize its analytics by:
-- Migrating operational data from on-premises SQL Server
-- Building a scalable, secure, and high-performance cloud data pipeline
-- Enabling data-driven decisions via Power BI dashboards
+An end-to-end data engineering project to track and visualize customer metrics across a retail chain using Azure services, Databricks, and Power BI.
 
 ---
 
-## Technologies Used
+## Architecture
 
-| Layer         | Tools & Services |
-|---------------|------------------|
-| Ingestion     | Azure Data Factory, ADLS Gen2 |
-| Processing    | Azure Databricks (PySpark, Delta Lake) |
-| Storage       | Bronze, Silver, Gold layers (Medallion Architecture) |
-| Querying      | Azure Synapse Analytics |
+Architecture.png.png
+
+
+---
+
+## Project Overview
+
+In This project I demonstrated a real-time data pipeline that ingests, transforms, and visualizes customer engagement metrics from multiple retail stores. It uses the Medallion Architecture (Bronze, Silver, Gold) to ensure scalable and clean data layers.
+
+---
+## Project Structure.
+├── databricks_notebooks/
+│   ├── bronze_to_silver.ipynb
+│   └── silver_to_gold.ipynb
+├── powerbi_reports/
+│   └── Customer_Metrics_Report.pbix
+├── keyvault_config/
+│   └── keyvault_setup.md
+├── architecture.png
+└── README.md
+
+
+## 🚀 Technologies Used
+
+| Layer | Tool |
+|-------|------|
+| Storage | Azure Data Lake Storage Gen2 |
+| Ingestion | Azure Data Factory |
+| Transformation | Azure Databricks (PySpark) |
+| Query & Analysis | Azure Synapse |
 | Visualization | Power BI |
-| Security      | Azure Key Vault |
-| DevOps        | GitHub |
+| Secrets Management | Azure Key Vault |
 
 ---
 
-## Pipeline Flow
+## 🧪 Pipeline Stages
 
-1. **Ingest SQL Server data**  
-   → using ADF to the **Bronze** layer in ADLS
-
-2. **Clean & transform**  
-   → using Databricks to **Silver** layer
-
-3. **Business aggregations & modeling**  
-   → Databricks outputs to **Gold** layer
-
-4. **Query**  
-   → using external tables in Synapse
-
-5. **Visualize**  
-   → Power BI connected to Synapse
+1. **Bronze Layer**: Raw CSV files ingested from ADLS
+2. **Silver Layer**: Cleaned and normalized data using PySpark
+3. **Gold Layer**: Aggregated metrics like Customer Count per Company
+4. **Synapse**: Final table loaded for BI consumption
+5. **Power BI**: Customer dashboard with company-wise metrics
 
 ---
 
-## Features Implemented
+## 📊 Power BI Report
 
-- Incremental Data Loading
-- Bronze/Silver/Gold Architecture
-- Delta Lake Format & ACID Transactions
-- Star Schema (Fact + Dimension Tables)
-- Synapse External Tables
-- Power BI Dashboard
-- Azure Key Vault for secrets
+A Power BI dashboard is built on top of the Gold layer to show:
+
+- Total number of customers per company
+- Company-wise distribution
+- KPIs with card visuals
+
+📁 File: `powerbi_reports/Customer_Metrics_Report.pbix`
 
 ---
+
+## 🔐 Security with Azure Key Vault
+
+All credentials are securely stored in **Azure Key Vault** and retrieved via secret scopes in Databricks:
+
+```python
+storage_key = dbutils.secrets.get(scope="my-keyvault-scope", key="storage-account-key")
 
 
 
